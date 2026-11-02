@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fenrir-backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: fenrir-backend
+  template:
+    metadata:
+      labels:
+        app: fenrir-backend
+    spec:
+      containers:
+        - name: fenrir-backend-container
+          image: docker.io/drizzy0606/assignment1:backend-v3
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_HOST
+              value: mongo.python-full.svc.cluster.local
